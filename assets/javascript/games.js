@@ -1,0 +1,1 @@
+var yourScore = document.getElementById('yourScore');

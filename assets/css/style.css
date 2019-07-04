@@ -1,6 +1,12 @@
-.gems {
+/* .gems {
     width: 200px;
     height: 200px;
     margin: 0;
     padding: 0;
+} */
+body {
+    background-color: rosybrown
+}
+.card {
+    background-color: palegoldenrod
 }

@@ -1,12 +1,12 @@
 $(document).ready(function () {
 
-    var randomNum;
+    var randomNum = Math.floor(Math.random() * 19 + 102);
 
     function resetNum() {
         
-        randomNum = Math.floor(Math.random() * (19 - 120)) + 1;
+        randomNum = Math.floor(Math.random() * 19 + 102);
         console.log(randomNum);
-        
+
         ruby = Math.floor(Math.random() * 12) + 1;
         sapphire = Math.floor(Math.random() * 12) + 1;
         diamond = Math.floor(Math.random() * 12) + 1;

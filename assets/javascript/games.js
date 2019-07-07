@@ -49,12 +49,19 @@ $(document).ready(function () {
 
         });
 
-        // Create a game function where # is set for each crystal
     }
-
+    
+    // Create a game function where # is set for each crystal
     for (var i = 0; i < 4; i++) {
         random = Math.floor(Math.random() * 12);
         console.log(random);
+
+        var gems = $("<div>");
+        gems.attr({
+            "class": 'gems',
+            "data-random": random
+        });
+        $(".gems").append(gems);
     }
     // $("#ruby" + (i + 1)).attr("data-value", numberOptions[i]);
     // yourScore = yourScore + ruby;
@@ -72,7 +79,8 @@ $(document).ready(function () {
 
     // usernumber set
     // computer # set
-    $('#ruby').on("click", function () {
+    $('.gems').on("click", function () {
+        console.log($(this))
     // display crystal value
     // $('#')
     // adds value of crystal to user#

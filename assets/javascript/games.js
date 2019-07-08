@@ -15,12 +15,13 @@ $(document).ready(function () {
     var diamond = document.getElementById("diamond");
     var emerald = document.getElementById("emerald");
 
+    $("#targetNum").html('Heres a Number ');
+
     function resetNum() {
 
         random = Math.floor(Math.random() * 19 + 102);
         console.log(random);
 
-        $("#result").html('Random Result: ');
 
         ruby = Math.floor(Math.random() * 12) + 1;
         sapphire = Math.floor(Math.random() * 12) + 1;
@@ -50,42 +51,50 @@ $(document).ready(function () {
         });
 
     }
-    
+
     // Create a game function where # is set for each crystal
     for (var i = 0; i < 4; i++) {
-        random = Math.floor(Math.random() * 12);
+        random = Math.floor(Math.random() * 10)+2;
         console.log(random);
 
-        var gems = $("<div>");
-        gems.attr({
-            "class": 'gems',
-            "data-random": random
-        });
-        $(".gems").append(gems);
-    }
-    // $("#ruby" + (i + 1)).attr("data-value", numberOptions[i]);
-    // yourScore = yourScore + ruby;
-    // console.log("New yourScore " + yourScore);
-    // $("#score").text(yourScore);
+        var button = $("<buttons>");
+            button.attr({
+                "class": 'gems',
+                "data-value": random
+            });    
+        
+        $("#ruby").val(random);
+        $("#sapphire").val(random);
+        $("#diamond").val(random);
+        $("#emerald").val(random);
+        
+    };
 
-    if (yourScore === random) {
-        win()
-    }
-    else if (yourScore > random) {
-        lose()
-    }
-
-
-
-    // usernumber set
-    // computer # set
     $('.gems').on("click", function () {
         console.log($(this))
-    // display crystal value
-    // $('#')
-    // adds value of crystal to user#
-    win();
-})
+
+
+        // $("#ruby" + (i + 1)).attr("data-value", numberOptions[i]);
+        // yourScore = yourScore + ruby;
+        // console.log("New yourScore " + yourScore);
+        // $("#score").text(yourScore);
+
+        if (yourScore === random) {
+            win()
+        }
+        else if (yourScore > random) {
+            lose()
+        }
+
+
+
+        // usernumber set
+        // computer # set
+        // display crystal value
+        // $('#')
+        // adds value of crystal to user#
+        // win();
+    })
 
     // run check function
     // if usernumber = computernumber "you win", then increase win by 1, then reset the game

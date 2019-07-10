@@ -2,11 +2,7 @@ $(document).ready(function () {
 
     var random = Math.floor(Math.random() * 19 + 102);
 
-
-    $("targetNum").text(random);
-    $("#numberWins").text(wins);
-    $("#numberLosses").text(losses);
-
+    
     var wins = 0;
     var losses = 0;
     var yourScore = 0;
@@ -14,70 +10,51 @@ $(document).ready(function () {
     var sapphire = document.getElementById("sapphire");
     var diamond = document.getElementById("diamond");
     var emerald = document.getElementById("emerald");
-
+    
+    $("#wins-num").text(wins);
+    $("#losses-num").text(losses);
     $("#targetNum").html('Heres a Number ');
-
+    
     function resetNum() {
-
+        
         random = Math.floor(Math.random() * 19 + 102);
         console.log(random);
-
-
+        $("#hereNumber").text(random);
+        
+        
         ruby = Math.floor(Math.random() * 12) + 1;
+        $("#ruby").attr("data-value", ruby);
         sapphire = Math.floor(Math.random() * 12) + 1;
+        $("#sapphire").attr("data-value", sapphire);
         diamond = Math.floor(Math.random() * 12) + 1;
+        $("#diamond").attr("data-value", diamond);
         emerald = Math.floor(Math.random() * 12) + 1;
+        $("#emerald").attr("data-value", emerald);
         yourScore = 0;
-        $("#score").text(yourScore);
+        $("#yourScore").text(yourScore);
     }
 
     function win() {
         alert("You Won!");
         wins++;
-        $("numberWins").text(wins);
+        $("#wins-num").text(wins);
         resetNum();
     }
-    function loser() {
+    function lose() {
         alert("You Lose!");
         losses++;
-        $("numberLosses").text(losses);
+        $("#losses-num").text(losses);
         resetNum();
     }
-    function game() {
-        resetNum()
+    
+    $(".gems").on("click", function () {
+        var crystalValue = ($(this).attr("data-value"));
+        console.log(crystalValue)
+        crystalValue = parseInt(crystalValue);
+        console.log(crystalValue)
+        yourScore += crystalValue;
 
-        $("#number").on("click", function () {
-
-        });
-
-    }
-
-    // Create a game function where # is set for each crystal
-    for (var i = 0; i < 4; i++) {
-        random = Math.floor(Math.random() * 10)+2;
-        console.log(random);
-
-        var button = $("<buttons>");
-            button.attr({
-                "class": 'gems',
-                "data-value": random
-            });    
-        
-        $("#ruby").val(random);
-        $("#sapphire").val(random);
-        $("#diamond").val(random);
-        $("#emerald").val(random);
-        
-    };
-
-    $('.gems').on("click", function () {
-        console.log($(this))
-
-
-        // $("#ruby" + (i + 1)).attr("data-value", numberOptions[i]);
-        // yourScore = yourScore + ruby;
-        // console.log("New yourScore " + yourScore);
-        // $("#score").text(yourScore);
+        $("#yourScore").text(yourScore);
 
         if (yourScore === random) {
             win()
@@ -86,19 +63,7 @@ $(document).ready(function () {
             lose()
         }
 
-
-
-        // usernumber set
-        // computer # set
-        // display crystal value
-        // $('#')
-        // adds value of crystal to user#
-        // win();
     })
 
-    // run check function
-    // if usernumber = computernumber "you win", then increase win by 1, then reset the game
-    // else if usernumber is greater then the computernumber then "you lose", then increase loss by 1, then reset the game
-    // game();
     resetNum()
 });
